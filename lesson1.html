@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>С++ how to articles. Connect to database</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Template">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- FontAwesome JS-->
+    <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js"
+        integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7"
+        crossorigin="anonymous"></script>
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/monokai-sublime.min.css">
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme-1.css">
+
+
+
+</head>
+
+<body>
+
+    <header class="header text-center">
+
+        <h2 class="blog-name pt-lg-4 mb-0"><a href="index.html">Зміст</a></h2>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+                aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="navigation" class="collapse navbar-collapse flex-column">
+                <div class="profile-section pt-3 pt-lg-0">
+
+                    <ul class="navbar-nav flex-column text-left">
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href="lesson1.html">Урок 1.</a>
+                            <a class="nav-link" href="#first" style="padding-top: 0px;
+                            padding-bottom: 0px;padding-left: 20px;padding-right: 0px;">Як встановити собі sqlite на linux?</a>
+                            <a class="nav-link" href="#first" style="padding-top: 0px;
+                            padding-bottom: 0px;padding-left: 20px;padding-right: 0px;">Як користуватись sqlite?</a>
+                            <a class="nav-link" href="#third" style="padding-top: 0px;
+                                padding-bottom: 0px;padding-left: 20px;padding-right: 0px;">Як написати свою першу
+                                програму?</a>
+                            <a class="nav-link" href="#fourth" style="padding-top: 0px;
+                                padding-bottom: 0px;padding-left: 20px;padding-right: 0px;">Що робити далі?</a>
+                        </li>
+                    </ul>
+
+                    <!--//social-list-->
+                </div>
+                <!--//profile-section-->
+
+
+                <div class="my-2 my-md-3">
+                    <a class=" btn btn-primary " href="index.html ">Повернутись назад</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main-wrapper">
+
+        <article class="blog-post px-3 py-5 p-md-5">
+            <div class="container">
+                <header class="blog-post-header">
+                    <h1 class="title mb-2">Урок перший</h1>
+                    <div class="meta mb-3"><span class="date">First lesson</span><span class="time">60 min
+                            read</span></div>
+                </header>
+                <div class="blog-post-body">
+                    <a name="first">
+                        <h2>1.Як встановити собі sqlite на linux?</h2>
+                    </a>
+                    <div class="meta mb-3"><span class="date">How to install sqlite on linux?</span></div>
+                    <p>
+                        SQLite — полегшена реляційна система керування базами даних. Втілена у вигляді бібліотеки, де реалізовано багато зі стандарту SQL-92. С
+                        ирцевий код SQLite поширюється як суспільне надбання (англ. public domain), т
+                        обто може використовуватися без обмежень та безоплатно з будь-якою метою. 
+                        Фінансову підтримку розробників SQLite здійснює спеціально створений консорціум, 
+                        до якого входять такі компанії, як Adobe, Oracle, Mozilla, Nokia, Bentley і Bloomberg.
+                        <br>Особливістю SQLite є те, що вона не використовує парадигму клієнт-сервер, тобто рушій SQLite не є 
+                        окремим процесом, з яким взаємодіє застосунок, а надає бібліотеку, з якою програма компілюється і 
+                        рушій стає складовою частиною програми. Таким чином, як протокол обміну використовуються виклики 
+                        функцій (API) бібліотеки SQLite. Такий підхід зменшує накладні витрати, час відгуку і спрощує програму. 
+                        SQLite зберігає всю базу даних (включаючи визначення, таблиці, індекси і дані) в єдиному стандартному файлі 
+                        на тому комп'ютері, на якому виконується застосунок. Простота реалізації досягається за рахунок того, 
+                        що перед початком виконання транзакції весь файл, що зберігає базу даних, блокується; ACID-функції д
+                        осягаються зокрема за рахунок створення файлу-журналу.(Детальніше <a target="_blank" rel="nofollow" href="https://uk.wikipedia.org/wiki/SQLite">https://uk.wikipedia.org/wiki/SQLite</a>)
+                        <br>Для того щоб встановити собі sqlite, необхідно виконати декілька кроків:
+                        <ul>
+                            <li>Перейти на <a target="_blank" rel="nofollow" href="https://www.sqlite.org/download.html">сторінку завантаження SQLite </a>, 
+                                і завантажити sqlite-autoconf-*.tar.gz з версії з кодом(source code section)</li>
+                            <li>Перейти в папку з завантаженням і розпакувати архів виконавши в консолі команду
+                                <b>tar xvfz sqlite-autoconf-<версія архіву>.tar.gz</b>
+                                <br> Наприклад
+                                <br><img src="assets/images/lesson1/unpack.png" width="50%">
+                            </li>
+                            <li>Перейти в папку з розпакованим архівом 
+                                <b>cd sqlite-autoconf-<версія архіву></b>
+                                <br> Наприклад
+                                <br><img src="assets/images/lesson1/change.png" width="50%">
+                            </li>
+                            <li>Вказати місцем встановлення загальну папку з бібліотеками <b>./configure --prefix=/usr/local</b>
+                            </li>
+                            <li>Зібрати з вихідного коду програму встановлення виконавши команду <b>make</b>
+                            </li>
+                            <li>Встановити собі базу данних командою <b>sudo make install</b>
+                            </li> 
+                        </ul>       
+                    </p>
+                </div>
+                <a name="second">
+                    <h2>2.Як користуватись sqlite?</h2>
+                </a>
+                <div class="meta mb-3"><span class="date">How to use sqlite?</span></div>
+                <p>
+                    sqlite база данних без клієнта, вся робота з нею відбувається з консолі. 
+                    Для того щоб почати роботу необхідно виконати команду <b>sqlite3</b> в консолі 
+                </p>
+                <img src="assets/images/lesson1/start.png" width="120%"><br>
+                <br>До базових команд належать:
+                        <ul>
+                            <li>.help - інфорація про команду/програму</li>
+                            <li>.exit - вихід</li>
+                            <li>.backup ?DB? FILE - зберегти базу данних в файл</li>
+                            <li>.dump ?TABLE? - збеерегти дані таблиці в окремий файл</li>
+                            <li>.import FILE TABLE - імпортувати данні з файлу в таблицю</li>
+                        </ul> 
+                <br> Щоб створити нову базу данних/відкрити існуючих треба виконати команду <b>sqlite3 <DatabaseName.db></b>     
+                <br> Командою .databases можна побачити список всіх таблиць в бд
+                    <a name="third">
+                    <h2>3.Як написати свою першу програму?</h2>
+                </a>
+                <div class="meta mb-3"><span class="date">How to write Hello World?</span></div>
+                <p>
+                    Будь-який програміст завжди пам'ятає свою першу програму. У всіх програмістів вона однакова.
+                    Це вивід привітання "Привіт світ"(Англійською "Hello world"). Базовою ж програмою для роботи 
+                    з БД є програма конекту до бази данних. Приклад коду
+                
+                <img src="assets/images/lesson1/connect.png" width="120%"><br>
+                <br> <b>Під час збірки програми необхідно або вказати компілятору через опцію  -l sqlite3 що потрібно підключити дану бібліотеку,
+                або вказати її в cmake файлі</b>
+                </p>
+                <a name="fourth">
+                    <h2>4. Що робити далі?</h2>
+                </a>
+                <p>
+                <div class="meta mb-3"><span class="date">What next?</span></div>
+                <p>
+                    Приклад програм для вичитки/вставки/видалення/апдейту/створення таблиць
+                </p>
+                <img src="assets/images/lesson1/select.png" width="100%"><br><br>
+                <img src="assets/images/lesson1/insert.png" width="100%"><br><br>
+                <img src="assets/images/lesson1/delete.png" width="100%"><br><br>
+                <img src="assets/images/lesson1/update.png" width="100%"><br><br>
+                <img src="assets/images/lesson1/create.png" width="100%"><br><br>
+                <h2 align="center">So Long, and Thanks for All the Fish</h2>
+            </div>
+            <!--//container-->
+        </article>
+
+        <footer class="footer text-center py-2 theme-bg-dark ">
+
+        </footer>
+
+    </div>
+    <!--//main-wrapper-->
+    <input type="hidden" value="https://www.tutorialspoint.com/sqlite/sqlite_c_cpp.htm">
+    <!-- Javascript -->
+    <script src="assets/plugins/popper.min.js "></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js "></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/blog.js "></script>
+
+
+
+</body>
+
+</html>
+
+
+
+
+<!--
+<p style="background-color:rgb(224, 224, 224); padding: 15px; "><i><b>Note:</b> </i></p>
+<img width="120px" src="assets/images/cs30.png" style="margin-bottom: 10px;" alt="">
+
+<br>
+<h2>Повторне використання</h2>
+<div class="meta mb-3"><span class="date">Reusability</span></div>
+-->
