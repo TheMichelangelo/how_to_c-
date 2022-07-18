@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>С++ how to articles. cmake file implementation</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Template">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- FontAwesome JS-->
+    <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js"
+        integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7"
+        crossorigin="anonymous"></script>
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/monokai-sublime.min.css">
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme-1.css">
+
+
+
+</head>
+
+<body>
+
+    <header class="header text-center">
+
+        <h2 class="blog-name pt-lg-4 mb-0"><a href="index.html">Зміст</a></h2>
+
+        <nav class="navbar navbar-expand-lg navbar-light">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+                aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="navigation" class="collapse navbar-collapse flex-column">
+                <div class="profile-section pt-3 pt-lg-0">
+
+                    <ul class="navbar-nav flex-column text-left">
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href="lesson1.html">Урок 2.</a>
+                            <a class="nav-link" href="#first" style="padding-top: 0px;
+                            padding-bottom: 0px;padding-left: 20px;padding-right: 0px;">Що таке cmake файл?</a>
+                            <a class="nav-link" href="#first" style="padding-top: 0px;
+                            padding-bottom: 0px;padding-left: 20px;padding-right: 0px;">Основні команди</a>
+                            <a class="nav-link" href="#third" style="padding-top: 0px;
+                                padding-bottom: 0px;padding-left: 20px;padding-right: 0px;">Правила оформлення</a>
+                            <a class="nav-link" href="#fourth" style="padding-top: 0px;
+                                padding-bottom: 0px;padding-left: 20px;padding-right: 0px;">Приклад готового файлу</a>
+                        </li>
+                    </ul>
+
+                    <!--//social-list-->
+                </div>
+                <!--//profile-section-->
+
+
+                <div class="my-2 my-md-3">
+                    <a class=" btn btn-primary " href="index.html ">Повернутись назад</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main-wrapper">
+
+        <article class="blog-post px-3 py-5 p-md-5">
+            <div class="container">
+                <header class="blog-post-header">
+                    <h1 class="title mb-2">Урок другий</h1>
+                    <div class="meta mb-3"><span class="date">Second lesson</span><span class="time">60 min
+                            read</span></div>
+                </header>
+                <div class="blog-post-body">
+                    <a name="first">
+                        <h2>1.Що таке cmake файл?</h2>
+                    </a>
+                    <div class="meta mb-3"><span class="date">What is cmake?</span></div>
+                    <p>
+                        CMake — це розширювана система з відкритим кодом, яка керує процесом збирання в операційній системі та незалежно від компілятора.
+                        На відміну від багатьох кросплатформних систем, CMake розроблено для використання разом із рідним середовищем збірки. Прості файли конфігурації, розміщені в кожному вихідному каталозі (так звані файли CMakeLists.txt), використовуються для створення стандартних файлів збірки (наприклад, Makefiles в Unix і проектів/робочих областей у Windows MSVC), які використовуються у звичайний спосіб.
+                        <br><br>CMake може створити власне середовище збирання, яке буде компілювати вихідний код, створювати бібліотеки, генерувати оболонки та створювати виконувані двійкові файли в довільних комбінаціях. CMake підтримує збірки на місці та поза місцем, і тому може підтримувати кілька збірок з одного вихідного дерева.
+                        <br><br>CMake підтримує статичні та динамічні збірки бібліотек. Ще одна приємна особливість CMake полягає в тому, що він може генерувати файл кешу, призначений для використання з графічним редактором. Наприклад, під час роботи CMake він знаходить включені файли, бібліотеки та виконувані файли та може зіткнутися з необов’язковими директивами збірки. Ця інформація збирається в кеш-пам’ять, яку користувач може змінити перед створенням власних файлів збірки.
+                        <br><br>Cценарії CMake також спрощують керування вихідним кодом, оскільки спрощують збірку сценарію в один файл і більш упорядкований, читабельний формат.
+                    
+                        <br><br>CMake мав на меті бути кросплатформним менеджером процесу збирання, тому він визначає це власна мова сценаріїв із певним синтаксисом і вбудованими функціями. Сам CMake є програмним забезпеченням, тому його слід викликати разом із файлом сценарію для інтерпретації та створення фактичного файлу збірки.
+
+                        <br>Розробник може писати як прості, так і складні сценарії побудови, використовуючи мову CMake для проектів.
+                        
+                        <br>Логіка побудови та визначення з мовою CMake записуються або в CMakeLists.txt, або у файлі, що закінчується на <project_name>.cmake. Але як найкращу практику, головний сценарій називається CMakeLists.txt замість cmake.
+                        
+                        <br>
+                        <ul>
+                            <li>
+                                Файл CMakeLists.txt розміщується в корні проекту, який ви хочете створити.
+                            </li>
+                            <li>
+                                CMakeLists.txt розміщується в корені вихідного дерева будь-якої програми, бібліотеки, для якої він працюватиме.
+                            </li>
+                            <li>
+                                Якщо є кілька модулів і кожен модуль можна скомпілювати та створити окремо, файл CMakeLists.txt можна вставити у підпапку.
+                            </li>
+                            <li>
+                                Файли .cmake можна використовувати як сценарії, які запускають команду cmake для підготовки попередньої обробки середовища або розділення завдань, які можна писати поза CMakeLists.txt.
+                            </li>
+                            <li>
+                                Файли .cmake також можуть визначати модулі для проектів. Ці проекти можуть бути розділеними процесами збирання для бібліотек або додатковими методами для складних багатомодульних проектів.
+                            </li>
+                        </ul>
+                        Написання файлів Makefiles може бути складнішим, ніж написання сценаріїв CMake. Синтаксис і логіка сценаріїв CMake подібні до мов високого рівня, тому розробникам легше створювати свої сценарії cmake з меншими зусиллями та без втрати в Makefiles.
+                    </p>
+                    <a name="second">
+                        <h2>2.Основні команди</h2>
+                    </a>
+                    <div class="meta mb-3"><span class="date">Basic commands</span></div>
+                    <p>
+                        Для того, щоб зібрати проект засобів CMake, необхідно в корені дерева вихідних файлів вказати файл CMakeLists.txt, що зберігає правила і цілі зборки, і кілька простих кроків.
+                        Синтаксис CMake схожий на синтаксис bash, що після символу "#" є коментарем і оброблятися програмою не буде. CMake дозволяє не засмічувати дерево вихідних кодів тимчасовими файлами - дуже просто і без зайвих рухів тіла збірка проводиться «Out-of-Source».
+                    
+                        <br>
+                        CMake commands є подібні до C++/Java методів або функцій, які використовуються параметри як список і виконання певних дій, відповідно.
+                        CMake Commands є випадковим. Там є комбінації, які можуть бути зроблені з cmake documentation: https://cmake.org/cmake/help/latest/manual/cmake-commands.7.html
+                        <br> Команди,що використовуються найчастіше
+                        <ul>
+                            <li>message: Друкує повідомлення</li>
+                            <li>cmake_minimum_required: Встановлює мінімальну версію CMake для запуску</li>
+                            <li>add_executable: вказує назву файлу запуску</li>
+                            <li>add_library: додає бібліотеки, що потрібні для білду коду</li>
+                            <li>add_subdirectory: додає підпроекти в білд проекту</li>
+                        </ul>
+                        Існують спільні команди, що використовуються для проміжків, ітерацій в списку, присвоєнь:
+                        <ul>
+                            <li>if, endif</li>
+                            <li>elif, endif</li>
+                            <li>while, endwhile</li>
+                            <li>foreach, endforeach</li>
+                            <li>list</li>
+                            <li>return</li>
+                            <li>set_property (assign value to variable.)</li>
+                        </ul>   
+                        Відступи не є обов’язковими, але рекомендуються під час написання сценаріїв CMake. CMake не використовує ';' зрозуміти кінець висловлювання.
+                        Всі конкретні положення повинні бути виконані з його відповідним кінцем (endif, endwhile, endforeachetc)
+                        <br><b>Змінні середовища</b> використовуються для налаштування прапорів компілятора, прапорів компонувальника, тестових конфігурацій для звичайного процесу збирання. Компілятор повинен керуватися пошуком заданих каталогів для бібліотек.
+                        Приклад використання, коли ви хочете ввімкнути всі попередження під час процесу компіляції, ви можете написати команду -Wall to build. Якщо ви створюєте свій код за допомогою CMake, ви можете додати прапорець -Wall за допомогою команди set.
+                        <a target="_blank" rel="nofollow" href="https://cmake.org/cmake/help/latest/manual/cmake-env-variables.7.html">Детальніше</a>. 
+                        <img src="assets/images/lesson2/variables.png" width="100%">
+                        CMake містить попередньо визначені змінні, які встановлено за замовчуванням як розташування вихідного дерева та компонентів системи.
+                        Змінні чутливі до регістру, а не команди. Ви можете використовувати лише буквено-цифрові символи та підкреслення, тире (_, -) у визначенні змінної.
+                        Деякі зі змінних можна побачити, як показано нижче, визначені відповідно до кореневої папки:
+                        <ul>
+                            <li>CMAKE_BINARY_DIR: повний шлях до верхнього рівня дерева збірки та бінарної вихідної папки, за замовчуванням він визначається як верхній рівень дерева збірки.
+                            </li>
+                            <li>CMAKE_HOME_DIRECTORY: шлях до верхньої частини дерева вихідних кодів</li>
+                            <li>CMAKE_SOURCE_DIR: повний шлях до верхнього рівня дерева вихідних кодів.</li>
+                            <li>CMAKE_INCLUDE_PATH: Шлях, який використовується для пошуку файлу, шляху</li>
+                        </ul>   
+                        Значення змінної можна отримати за допомогою ${<variable_name>}.
+                        <a target="_blank" rel="nofollow" href="https://cmake.org/cmake/help/v3.3/manual/cmake-generator-expressions.7.html">Детальніше CMake Generator Expressions</a>. 
+                            
+                    </p>
+                    <a name="third">
+                        <h2>3.Правила оформлення</h2>
+                    </a>
+                    <div class="meta mb-3"><span class="date">Formatting rules</span></div>
+                    <p>
+                        Антишаблони CMake
+                        Наступні списки значною мірою базуються на чудовій статті <a target="_blank" rel="nofollow" href="https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1">Effective Modern CMake</a>. 
+                        Цей список набагато довший і детальніший, не соромтеся його також прочитати.
+                        <br> Анти-патерни
+                        <ul>
+                            <li>Не використовуйте глобальні функції: це включає link_directories, include_libraries тощо.</li>
+                            <li>Не додавайте непотрібних вимог PUBLIC: вам слід уникати нав’язування користувачам чогось непотрібного (-Wall). Натомість зробіть їх ПРИВАТНИМИ.</li>
+                            <li>Не створюйте файли GLOB: Make або інший інструмент не знатиме, якщо ви додаєте файли без повторного запуску CMake. Зверніть увагу, що CMake 3.12 додає прапорець CONFIGURE_DEPENDS, який робить це набагато краще, якщо вам потрібно його використовувати.
+                            </li>
+                            <li>Пряме посилання на створені файли: завжди посилайтеся на цілі, якщо вони доступні.</li>
+                            <li> Ніколи не пропускайте PUBLIC/PRIVATE під час створення посилань: це призведе до того, що всі майбутні посилання будуть без ключових слів.
+                            </li>
+                        </ul>
+                       Рекомендації
+                        <ul>
+                            <li>Розглядайте CMake як код: це код. Він має бути таким же чистим і читабельним, як і весь інший код.</li>
+                            <li>Думайте про цілі: ваші цілі мають представляти концепції. Зробіть ціль (ІМПОРТОВАНОГО) ІНТЕРФЕЙСУ для всього, що має залишатися разом, і посилатися на це.
+                            </li>
+                            <li>Експортуйте свій інтерфейс: ви зможете запускати зі збірки або встановлення.</li>
+                            <li>Напишіть файл Config.cmake: це те, що повинен зробити автор бібліотеки для підтримки клієнтів.</li>
+                            <li>Зробіть цілі ALIAS, щоб зберегти узгодженість використання: використання add_subdirectory і find_package повинно забезпечити однакові цілі та простори імен.
+                            </li>
+                            <li>Об’єднайте спільну функціональність у чітко задокументовані функції або макроси: функції зазвичай кращі.</li>
+                            <li>Використовуйте назви функцій у нижньому регістрі: функції та макроси CMake можна називати у нижньому або верхньому регістрі. Завжди використовуйте нижній регістр. Верхній регістр для змінних.
+                            </li>
+                            <li>Використовуйте cmake_policy та/або діапазон версій: політики змінюються з певної причини. Лише поетапно встановлюйте СТАРИ правила, якщо потрібно.
+                            </li>
+                        </ul>
+                    </p>
+                    <a name="fourth">
+                        <h2>4. Приклад готового файлу</h2>
+                    </a>
+                    <p>
+                    <div class="meta mb-3"><span class="date">Example</span></div>
+                    <p>
+                        Уявімо що в нас є проект структурований за виглядом
+                        <img src="assets/images/lesson2/work-tree.png" width="100%">  
+                        Нехай subProject це статична бібліотека. ЇЇ CMake файл буде виглядати наступним чином
+                        <img src="assets/images/lesson2/cmake-subproject.png" width="100%">  
+                        <b><i>Файли вказані в CMake файлі вказані відносно самого файлу. Деякі системи, як Clion генерують
+                            папку білда і переносять туди копії файлів проекту. Існує ризик помилки білда, якщо файли помилково 
+                            вказані відносно цієї директорії
+                         </i></b>
+                         Основний файл проекту виглядатиме наступним чином
+                        <img src="assets/images/lesson2/cmake-main-project.png" width="100%">  
+                        Команда target_link_libraries може приймати повний список бібліотек, не тільки створених всередині проекту.
+                        Приклад перевірки існування бібліотеки перед її додаванням наведежний нижче
+                        <img src="assets/images/lesson2/find_additional_library.png" width="100%">  
+                    </p>
+                    <a target="_blank" rel="nofollow" href="https://medium.com/@onur.dundar1/cmake-tutorial-585dd180109b">Більше додаткової інформації</a>
+                </div>
+                <h2 align="center">That's all folks. 
+                    </h2>
+            </div>
+            <!--//container-->
+        </article>
+
+        <footer class="footer text-center py-2 theme-bg-dark ">
+
+        </footer>
+
+    </div>
+    <!--//main-wrapper-->
+    <input type="hidden" value="https://www.tutorialspoint.com/sqlite/sqlite_c_cpp.htm">
+    <!-- Javascript -->
+    <script src="assets/plugins/popper.min.js "></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js "></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/blog.js "></script>
+
+
+
+</body>
+
+</html>
+
+
+
+
+<!--
+<p style="background-color:rgb(224, 224, 224); padding: 15px; "><i><b>Note:</b> </i></p>
+<img width="120px" src="assets/images/cs30.png" style="margin-bottom: 10px;" alt="">
+
+<br>
+<h2>Повторне використання</h2>
+<div class="meta mb-3"><span class="date">Reusability</span></div>
+-->
